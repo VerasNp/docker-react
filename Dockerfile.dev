@@ -1,0 +1,14 @@
+# This file will only be used to development
+
+FROM node:14-alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+# Mesmo que não seja usado no momento é interessante deixar este comando pois futuramente é possível 
+# ser usado este arquivo como base para criação de outras imagens
+COPY . .
+
+CMD [ "npm", "run", "start" ]
