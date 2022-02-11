@@ -1,0 +1,13 @@
+# Super admin é necessário
+sudo: required
+language: generic
+# Define serviços que são precisos para os testes
+services:
+  - docker
+# Define ações que serão executadas antes do deploy da aplicação
+before_install:
+  - docker build -t verasnp/docker-react -f Dockerfile.dev .
+
+# Comandos para o test suit
+script:
+  - docker run -e CI=true verasnp/docker-react npm run test
